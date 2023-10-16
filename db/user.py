@@ -43,35 +43,50 @@ _description_id = f"{Description.__tablename__}.id"
 class UserRole(enum.Enum):
     """
     Роль пользователя
+
+    owner > maintainer > admin > leader > mentor > student > undef
+
+    Проверка роли:
+    > if role >= UserRole.admin:
+    >     # можно что-то делать, у кого роль админ и выше
+    >     ...
+    > else:
+    >     # ошибка
+    >     ...
+    или
+    > if role < UserRole.admin:
+    >    # ошибка
+    >    ...
+
     """
-    undef = 'undef'
+    undef = 0
     #
 
     # Обыкновенный рядовой студент
-    student = 'student'
+    student = 1
 
     # Рядовой ментор (выпускник, человек из отрасли, читающий факультативы) и т.д.
-    mentor = 'mentor'
+    mentor = 5
 
     # Лидер кружков. Имеет права приглашать других студентов,
     # но несёт моральную отвественность за разъяснение правил работы кочевой библиотеки
-    leader = 'leader'
+    leader = 10
 
     # Администратор системы. Имеет широкие полномочия по управлению
-    admin = 'admin'
+    admin = 15
 
     # Управляющий системой. Главный админ и\или разработчик
-    maintainer = 'maintainer'
+    maintainer = 20
 
     # Владелец системы
-    owner = 'owner'
+    owner = 25
 
     #
-    reserved1 = 'reserved1'
-    reserved2 = 'reserved2'
-    reserved3 = 'reserved3'
-    reserved4 = 'reserved4'
-    reserved5 = 'reserved5'
+    # reserved1 = 'reserved1'
+    # reserved2 = 'reserved2'
+    # reserved3 = 'reserved3'
+    # reserved4 = 'reserved4'
+    # reserved5 = 'reserved5'
 
 
 class UserStatus(enum.Enum):
