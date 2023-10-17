@@ -32,6 +32,7 @@ import enum
 from sqlalchemy import Enum
 from sqlalchemy import ForeignKey
 from sqlalchemy import MetaData, Table, String, Integer, Column, Text, DateTime, Boolean, BigInteger, UUID
+from sqlalchemy import ARRAY
 
 from db.base import Base
 
