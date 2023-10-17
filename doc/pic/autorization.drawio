@@ -1,0 +1,161 @@
+<mxfile host="app.diagrams.net" modified="2023-10-17T09:32:31.153Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 YaBrowser/23.3.1.912 Yowser/2.5 Safari/537.36" etag="ZhDZl26l5kbneB3j4ZdI" version="22.0.4" type="device">
+  <diagram name="Страница — 1" id="2TMkSGMW4PiBf1K_IbsH">
+    <mxGraphModel dx="949" dy="675" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-1" value="Пользователь" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="150" y="60" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-2" value="&lt;b&gt;&lt;u&gt;Android&lt;br&gt;Приложение&lt;/u&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="75" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-3" value="&lt;b&gt;&lt;u&gt;Чат-бот&lt;/u&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="390" y="75" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-4" value="&lt;b&gt;&lt;u&gt;Сервер&lt;/u&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="75" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-7" value="Получение ссылки на актуальную версию" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="122.5" y="160" width="85" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-8" value="Получение ссылки на актуальное Android&amp;nbsp;&lt;br&gt;приложение" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="390" y="170" width="60" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-7" target="w03B9GN-rBTp-iz8MhaP-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="410" as="sourcePoint" />
+            <mxPoint x="440" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-19" value="Установка приложения" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="135" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-25" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-8" target="w03B9GN-rBTp-iz8MhaP-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="410" as="sourcePoint" />
+            <mxPoint x="440" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-26" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="800" as="sourcePoint" />
+            <mxPoint x="230" y="60" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-27" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="800" as="sourcePoint" />
+            <mxPoint x="370" y="65" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-28" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="800" as="sourcePoint" />
+            <mxPoint x="490" y="65" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-34" target="w03B9GN-rBTp-iz8MhaP-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-29" value="Установка" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="320" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-30" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-19" target="w03B9GN-rBTp-iz8MhaP-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="410" as="sourcePoint" />
+            <mxPoint x="440" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-31" value="Генерирование&lt;br&gt;&lt;b&gt;application_uuid&lt;br&gt;rsa_priv&lt;br&gt;rsa_pub&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="460" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-33" value="Запись&lt;br&gt;&lt;b&gt;application_uuid,&lt;br&gt;tg_name,&lt;br&gt;rsa_pub&lt;/b&gt;&lt;br&gt;&lt;br&gt;статус приложения: &quot;not_authorized&quot;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="370" width="100" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-29" target="w03B9GN-rBTp-iz8MhaP-34">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="350" as="sourcePoint" />
+            <mxPoint x="300" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-34" value="Спрашиваем &lt;b&gt;tg_name&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="380" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-37" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-31" target="w03B9GN-rBTp-iz8MhaP-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="410" as="sourcePoint" />
+            <mxPoint x="440" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-53" value="&lt;b&gt;&lt;i&gt;/auth/init&lt;/i&gt;&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="w03B9GN-rBTp-iz8MhaP-37">
+          <mxGeometry x="-0.0709" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-38" value="Генерирование&amp;nbsp;&lt;br&gt;pin-кода&amp;nbsp;&lt;br&gt;для &lt;b&gt;tg_name&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="560" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-39" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-33" target="w03B9GN-rBTp-iz8MhaP-38">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="505" as="sourcePoint" />
+            <mxPoint x="510" y="523" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="550" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-40" value="Ввод pin-кода для приложения" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="126.25" y="630" width="77.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-42" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-56" target="w03B9GN-rBTp-iz8MhaP-40">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="630" as="sourcePoint" />
+            <mxPoint x="440" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-43" value="Отправка&lt;br&gt;pin-кода,&lt;br&gt;введённого опльзователем" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="670" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-45" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-40" target="w03B9GN-rBTp-iz8MhaP-43">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170" y="540" as="sourcePoint" />
+            <mxPoint x="210" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-46" value="Проверка pin-кода.&lt;br&gt;&lt;br&gt;Статус приложения:&lt;br&gt;&quot;authorized&quot;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="505" y="653" width="100" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-49" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-43" target="w03B9GN-rBTp-iz8MhaP-46">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="633" as="sourcePoint" />
+            <mxPoint x="520" y="693" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-55" value="&lt;b&gt;&lt;i&gt;/auth/pin&lt;/i&gt;&lt;/b&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="w03B9GN-rBTp-iz8MhaP-49">
+          <mxGeometry x="-0.1654" relative="1" as="geometry">
+            <mxPoint x="15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-50" value="Зафиксировать&lt;br&gt;статус" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="770" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-51" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-46" target="w03B9GN-rBTp-iz8MhaP-50">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="715" as="sourcePoint" />
+            <mxPoint x="515" y="728" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-56" value="Отправка pin кода" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="583" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="w03B9GN-rBTp-iz8MhaP-63" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="w03B9GN-rBTp-iz8MhaP-38" target="w03B9GN-rBTp-iz8MhaP-56">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="620" as="sourcePoint" />
+            <mxPoint x="440" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
