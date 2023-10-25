@@ -6,3 +6,6 @@
 Первый документ: [~/doc/first.md](doc/first.md)
 
 User Case: [~/doc/uc.md](doc/uc.md)
+
+Архитектура:
+* [С1](doc/c1.md)
