@@ -1,5 +1,14 @@
 # Авторизация 
 
+**UPDATE 16.12.2023**
+
+ЭТА СТРАНИЦА УСТАРЕЛА.
+
+
+--------
+
+------
+
 Процедура авторизации: 
 ![autorization.drawio.png](pic/autorization.drawio.png)
 
