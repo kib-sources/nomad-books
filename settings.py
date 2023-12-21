@@ -26,13 +26,12 @@ __status__ = "Production"
 
 import os
 
-
-API_HOST = os.getenv('API_HOST', '0.0.0.0')
-
-# При смене порта, не забудьте поменять его в docker-compose.yaml
-# https порт по умолчанию
-API_PORT = int(os.getenv('API_PORT', 443))
-
-SSL_KEYFILE_PASSWORD = os.getenv('SSL_KEYFILE_PASSWORD', None)
-
 ORGANIZATION = os.getenv('ORGANIZATION', "Клуб Информационной Безопасности")
+
+TELEGRAM_USERNAME = os.getenv('TELEGRAM_USERNAME', None)
+assert TELEGRAM_USERNAME, "Вы не задали TELEGRAM_USERNAME переменную окружения"
+assert 'bot' in TELEGRAM_USERNAME, f'В TELEGRAM_USERNAME="{TELEGRAM_USERNAME}" нет подстроки "bot". Это не бот телеграмма'
+TELEGRAM_USERNAME = TELEGRAM_USERNAME[1:] if TELEGRAM_USERNAME.startswith('@') else TELEGRAM_USERNAME
+
+TELEGRAM_TOKEN_ACCESS = os.getenv('TELEGRAM_TOKEN_ACCESS', None)
+assert TELEGRAM_TOKEN_ACCESS, "Вы не задали TELEGRAM_TOKEN_ACCESS переменную окружения"
