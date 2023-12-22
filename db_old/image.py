@@ -1,6 +1,6 @@
 """
 <nomad-books>
-db/image.py
+db_old/image.py
     create by pavelmstu in 16.10.2023
 --------------------------------------------------------
 
@@ -30,7 +30,7 @@ from sqlalchemy import Enum
 from sqlalchemy import MetaData, Table, String, Integer, Column, Text, DateTime, Boolean, BigInteger
 from sqlalchemy import BLOB
 
-from db.base import Base
+from db_old.base import Base
 
 
 class Image(Base):

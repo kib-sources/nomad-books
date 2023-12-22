@@ -1,12 +1,12 @@
 """
 <nomad-books>
-db/descriptions.py
+db_old/descriptions.py
     create by pavelmstu in 14.10.2023
 --------------------------------------------------------
 
 Описания книг
 
-Описание экземпляров книг см. в db.sample
+Описание экземпляров книг см. в db_old.sample
 
 --------------------------------------------------------
 KIB, t.me/kibinfo
@@ -34,7 +34,7 @@ from sqlalchemy import Enum
 from sqlalchemy import MetaData, Table, String, Integer, Column, Text, DateTime, Boolean, BigInteger
 from sqlalchemy import ARRAY
 
-from db.base import Base
+from db_old.base import Base
 
 
 class DescriptionType(enum.Enum):

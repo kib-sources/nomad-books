@@ -1,12 +1,12 @@
 """
 <nomad-books>
-db/sample.py
+db_old/sample.py
     create by pavelmstu in 15.10.2023
 --------------------------------------------------------
 
 Описание конкретный экземпляров книг.
 
-Описание книг -- см. в db.descriptions
+Описание книг -- см. в db_old.descriptions
 
 --------------------------------------------------------
 KIB, t.me/kibinfo
@@ -33,10 +33,10 @@ from sqlalchemy import Enum
 from sqlalchemy import ForeignKey
 from sqlalchemy import MetaData, Table, String, Integer, Column, Text, DateTime, Boolean, BigInteger, UUID
 
-from db.base import Base
+from db_old.base import Base
 
-from db.description import Description
-from db.user import User
+from db_old.description import Description
+from db_old.user import User
 
 _description_id = f"{Description.__tablename__}.id"
 _user_id = f"{User.__tablename__}.id"

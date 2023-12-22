@@ -1,10 +1,10 @@
 """
 <nomad-books>
-db/application.py
+db_old/application.py
     create by pavelmstu in 16.10.2023
 --------------------------------------------------------
 
-db.application -- описание таблицы данных приложения
+db_old.application -- описание таблицы данных приложения
 
 --------------------------------------------------------
 KIB, t.me/kibinfo
@@ -34,11 +34,11 @@ from sqlalchemy import ForeignKey
 from sqlalchemy import MetaData, Table, String, Integer, Column, Text, DateTime, Boolean, BigInteger, UUID
 from sqlalchemy import ARRAY
 
-from db.base import Base
+from db_old.base import Base
 
-from db.description import Description
+from db_old.description import Description
 
-from db.user import User
+from db_old.user import User
 
 _user_id = f"{User.__tablename__}.id"
 
