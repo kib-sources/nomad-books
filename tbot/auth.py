@@ -19,7 +19,7 @@ __status__ = 'Develop'
 # __status__ = "Production"
 
 
-from core import bot
+from tbot import bot
 
 @bot.message_handler(commands=["start"])
 def start(m, res=False):

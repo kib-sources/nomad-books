@@ -16,16 +16,13 @@ __status__ = 'Develop'
 
 # __status__ = "Production"
 
-import os
-
 # ---------------------------------------------------------------------------------------------------------------------
 # Инициализация всех функций.
-import core.auth  # !
+import tbot.auth  # !
 # ---------------------------------------------------------------------------------------------------------------------
-import sys
 import logging
 from time import sleep
-from core import bot
+from tbot import bot
 
 from settings import TELEGRAM_USERNAME
 
