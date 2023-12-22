@@ -35,3 +35,22 @@ TELEGRAM_USERNAME = TELEGRAM_USERNAME[1:] if TELEGRAM_USERNAME.startswith('@') e
 
 TELEGRAM_TOKEN_ACCESS = os.getenv('TELEGRAM_TOKEN_ACCESS', None)
 assert TELEGRAM_TOKEN_ACCESS, "Вы не задали TELEGRAM_TOKEN_ACCESS переменную окружения"
+assert TELEGRAM_TOKEN_ACCESS.replace('*', ''), "Уберите звёздочки из TELEGRAM_TOKEN_ACCESS"
+
+POSTGRES_USER = os.getenv("POSTGRES_USER", "nomad")
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", None)
+assert POSTGRES_PASSWORD, "Укажите пароль к Postgress POSTGRES_PASSWORD"
+assert POSTGRES_PASSWORD.replace('*', ''), "Уберите звёздочки из POSTGRES_PASSWORD"
+
+
+POSTGRES_DB = os.getenv("POSTGRES_DB", POSTGRES_USER)
+POSTGRES_PORT = int(os.getenv("POSTGRES_PORT", 5432))
+
+POSTGRES_URL = os.getenv(
+    "POSTGRES_URL", "postgresql://<POSTGRES_USER>:<POSTGRES_PASSWORD>@localhost:<POSTGRES_PORT>/mydb?schema=<POSTGRES_DB>"
+)
+POSTGRES_URL = POSTGRES_URL.\
+    replace('<POSTGRES_USER>', POSTGRES_USER).\
+    replace("<POSTGRES_PASSWORD>", POSTGRES_PASSWORD).\
+    replace('<POSTGRES_PORT>', str(POSTGRES_PORT)).\
+    replace('<POSTGRES_DB>', POSTGRES_DB)
