@@ -1,0 +1,87 @@
+// database
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL") // "postgresql://user:password@localhost:5432/mydb?schema=nomad"
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+// generator
+generator client {
+  provider  = "prisma-client-py"
+  interface = "asyncio"
+}
+
+model TelegramUser {
+  id         BigInt   @id
+  username   String
+  role       String // "USER", "LEADER", "ADMIN", "LIBRARIAN", "DEVELOPER", "OWNER"
+  status     String // "INVITED", "ACTIVE", "LEAVING", "ZOMBIE"; "BLOCKED"
+  invite_by  BigInt // TelegramUser.id того, кто пригласил. У owner-а это 0.
+  //
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  comment    String?
+}
+
+model File {
+  id         String   @id @default(cuid())
+  body       Blob
+  name       String // "some.png"
+  type       String // "png"
+  //
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  comment    String?
+}
+
+model Tag {
+  id         String   @id @default(cuid())
+  value      String
+  //
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  comment    String?
+}
+
+model BookDescription {
+  id         String       @id @default(cuid())
+  title      String
+  about      String
+  authors    String?
+  year       Int
+  number     String?
+  tags       Tag[]?
+  main_foto  File?
+  fotos      File[]?
+  created_by TelegramUser
+  published  Boolean      @default(false)
+  // _search_text String?  // Если пустой -- нужно пересчитать
+  // ...
+  //
+  created_at DateTime     @default(now())
+  updated_at DateTime     @updatedAt
+  comment    String?
+}
+
+model BookSample {
+  id           String          @id @default(cuid())
+  book         BookDescription
+  owner        TelegramUser
+  owner_at     DateTime        @default(now())
+  created_by   TelegramUser
+  booked_until DateTime?       @default(null)
+  status       String // "INIT", "SEND", "PUBLISHED", "LOST"
+  //
+  created_at   DateTime        @default(now())
+  updated_at   DateTime        @updatedAt
+  comment      String?
+}
+
+model Log {
+  id         BitInt       @id @default(autoincrement())
+  created_by TelegramUser
+  command    String
+
+  //
+  created_at DateTime @default(now())
+}

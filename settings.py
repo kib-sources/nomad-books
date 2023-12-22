@@ -46,11 +46,14 @@ assert POSTGRES_PASSWORD.replace('*', ''), "Уберите звёздочки и
 POSTGRES_DB = os.getenv("POSTGRES_DB", POSTGRES_USER)
 POSTGRES_PORT = int(os.getenv("POSTGRES_PORT", 5432))
 
-POSTGRES_URL = os.getenv(
-    "POSTGRES_URL", "postgresql://<POSTGRES_USER>:<POSTGRES_PASSWORD>@localhost:<POSTGRES_PORT>/mydb?schema=<POSTGRES_DB>"
+POSTGRES_PRISMA_URL = os.getenv(
+    "POSTGRES_PRISMA_URL", None # "postgresql://<POSTGRES_USER>:<POSTGRES_PASSWORD>@localhost:<POSTGRES_PORT>/mydb?schema=<POSTGRES_DB>"
 )
-POSTGRES_URL = POSTGRES_URL.\
-    replace('<POSTGRES_USER>', POSTGRES_USER).\
-    replace("<POSTGRES_PASSWORD>", POSTGRES_PASSWORD).\
-    replace('<POSTGRES_PORT>', str(POSTGRES_PORT)).\
-    replace('<POSTGRES_DB>', POSTGRES_DB)
+
+
+
+# POSTGRES_URL = POSTGRES_URL.\
+#     replace('<POSTGRES_USER>', POSTGRES_USER).\
+#     replace("<POSTGRES_PASSWORD>", POSTGRES_PASSWORD).\
+#    replace('<POSTGRES_PORT>', str(POSTGRES_PORT)).\
+#    replace('<POSTGRES_DB>', POSTGRES_DB)

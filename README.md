@@ -6,6 +6,7 @@
 
 ## Запуск (Local Dev)
 
+### Postgres
 
 Для удобства установите
 ```bash
@@ -41,6 +42,31 @@ CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS      
 ...
 nomad=# \q
 ```
+
+### Prisma + прогрузка базы данных
+
+Установка
+```bash
+~$ npm install prisma --save-dev
+```
+
+Если старая версия  `nodejs`, то:
+```bash
+~$ curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+~$ sudo apt install -y nodejs
+~$ nodejs --version
+
+```
+
+
+Прогрузка БД
+```bash
+~$ source .../bin/activate
+~(venv)$ export $(grep -v '^#' .env | xargs)
+~(venv)$ prisma db pull
+```
+
+
 
 ## Запуск (Release)
 
