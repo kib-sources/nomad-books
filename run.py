@@ -26,6 +26,8 @@ from tbot import bot
 
 from settings import TELEGRAM_USERNAME
 
+from models import init
+
 # Запись логов в консоль.
 logging.basicConfig(level=logging.DEBUG)
 
@@ -51,4 +53,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if init():
+        main()

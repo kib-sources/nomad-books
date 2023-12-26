@@ -38,35 +38,11 @@ CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS      
 
 Проверьте, что Postgres запущен:
 ```commandline
+~$ export $(grep -v '^#' .env | xargs)
 ~$ psql postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@localhost:$POSTGRES_PORT/$POSTGRES_DB
 ...
 nomad=# \q
 ```
-
-### Prisma + прогрузка базы данных
-
-Установка
-```bash
-~$ npm install prisma --save-dev
-```
-
-Если старая версия  `nodejs`, то:
-```bash
-~$ curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-~$ sudo apt install -y nodejs
-~$ nodejs --version
-
-```
-
-
-Прогрузка БД
-```bash
-~$ source .../bin/activate
-~(venv)$ export $(grep -v '^#' .env | xargs)
-~(venv)$ prisma db pull
-```
-
-
 
 ## Запуск (Release)
 
