@@ -2,7 +2,7 @@
 class Descriptions(BaseModel)
 
 Create at 26.12.2023 15:42:49
-~/models/file.py
+~/models/description.py
 """
 
 __author__ = 'pavelmstu'
