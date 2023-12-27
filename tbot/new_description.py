@@ -26,16 +26,33 @@ from tbot import bot
 from models import Description
 from models import engine
 
+from models.description import ProposedGenreList
+
+import telebot.types
+
+
 # chat_id -> context
 _context_dict = dict()
 # chat_id -> timestamp. Нужно для удаления старых записей
 _context_timestamp_dict = dict()
 
 
+def two_elements_each(*some):
+
+    vals = list()
+    for v in some:
+        vals.append(v)
+        if len(vals) == 2:
+            yield tuple(vals)
+            vals = list()
+    if len(vals) == 1:
+        yield (vals[0], None)
+
+
 def  _break_step(message):
     _ = bot.send_message(
         message.chat.id,
-        f'''Вы отменили операцию\\. Введите `\\new-description` повторно для создания нового описания.
+        f'''Вы отменили операцию\\. Введите `/new_description` повторно для создания нового описания\\.
         ''',
         parse_mode='MarkdownV2',
     )
@@ -122,9 +139,16 @@ id\\=`{description.id}`
 
 Для добавления экземпляров книги введите команду:
 ```
-\\new_samples {description.id} --count N
+/new_samples {description.id} --count N
 ```
 где вместо `N` должно быть количество экземпляров\\.
+
+Книга пока недоступна\\(enabled\\=false\\)\\.
+
+Чтобы сделать описание книги доступным введите команду:
+```
+/enable {description.id}
+``` 
 """,
         parse_mode='MarkdownV2',
     )
@@ -179,7 +203,7 @@ def _step3(message):
     _one_step(
         message,
         'number',
-        int,
+        str,
           f'''Введите год издания\\. \n ОБЯЗАТЕЛЬНОЕ поле\\.
         ''',
         _step4
@@ -196,6 +220,16 @@ def _step2(message):
            ''',
         _step3
     )
+
+
+def _step1(message):
+
+    message_next = bot.send_message(
+        message.chat.id,
+        '''Введите название книги (`title`)
+'''
+    )
+    bot.register_next_step_handler(message_next, _step2)
 
 
 @bot.message_handler(commands=["new_description"])
@@ -215,15 +249,29 @@ def new_description(m, res=False):
         parse_mode='MarkdownV2',
     )
 
+    markup = telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True)
+
+    for genre1, genre2 in two_elements_each(*ProposedGenreList):
+        if genre2:
+            markup.add(
+                telebot.types.KeyboardButton(genre1),
+                telebot.types.KeyboardButton(genre2),
+            )
+        else:
+            markup.add(
+                telebot.types.KeyboardButton(genre1),
+            )
+
     message_next = bot.send_message(
         m.chat.id,
-        '''Введите название книги (`title`)
-'''
+        '''Введите тип книги:
+''',
+        reply_markup=markup,
     )
 
     _context_dict[m.chat.id] = dict()
 
-    bot.register_next_step_handler(message_next, _step2)
+    bot.register_next_step_handler(message_next, _step1)
     ''' # TEST
     _context_dict[m.chat.id] = {
         'title': "пример заголовка",

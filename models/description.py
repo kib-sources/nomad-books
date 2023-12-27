@@ -33,6 +33,7 @@ ProposedGenreList = [
     "методичка",
     GENRE_MAGAZINE,  # "журнал",
     "справочник",
+    "non-fiction",
     "худ.лит.",
 ]
 
@@ -56,7 +57,7 @@ class Description(BaseModel):
 
     authors = Column(ARRAY(Unicode), default=list, comment="Авторы книги/журнала")
 
-    number = Column(SmallInteger, default=None, comment="номер (для журнала)")
+    number = Column(Unicode, default=None, comment="номер (для журнала)")
 
     tags = Column(ARRAY(Unicode), default=list, comment="Теги")
 
