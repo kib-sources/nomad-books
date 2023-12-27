@@ -21,7 +21,11 @@ import os
 import logging
 
 from models.base import BaseModel
-from models.file import Files
+
+# ---------------------------------------------------------------------------------------------------------------------
+from models.file import File
+from models.description import Description
+# ---------------------------------------------------------------------------------------------------------------------
 
 from settings import POSTGRES_SQLALCHEMY_URL, POSTGRES_SQLALCHEMY_URL_password_esc
 

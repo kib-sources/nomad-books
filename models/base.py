@@ -31,6 +31,8 @@ from sqlalchemy import Table, Column, ForeignKey
 from sqlalchemy import Column
 from sqlalchemy import String, Integer, UUID, DateTime, BLOB
 
+from sqlalchemy.sql import func
+
 Mapped = _Mapped
 
 
@@ -39,7 +41,7 @@ def new_id():
 
 
 def _onupdate_update_at(context):
-    return datetime.datetime.now()
+    return datetime.datetime.utcnow()
 
 
 class BaseModel(MappedAsDataclass, DeclarativeBase):
@@ -47,10 +49,19 @@ class BaseModel(MappedAsDataclass, DeclarativeBase):
 
     id = Column(UUID, primary_key=True, default=new_id, comment="Уникальный UUID записи.")
 
-    create_at = Column(DateTime, default=datetime.datetime.now, comment="время создания записи в таблице")
+    create_at = Column(DateTime, default=datetime.datetime.utcnow, comment="время создания записи в таблице")
 
-    update_at = Column(DateTime, default=datetime.datetime.now, onupdate=_onupdate_update_at, comment="время последнего изменения данной записи")
+    update_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=_onupdate_update_at, comment="время последнего изменения данной записи")
 
     comment = Column(String, default=None, comment="Произвольный комментарий к строке")
 
+    @classmethod
+    def make(cls, **kwargs):
+        obj = cls()
+        for key, value in kwargs.items():
+            if hasattr(obj, key):
+                setattr(obj, key, value)
+            else:
+                raise ValueError(f"Нет поля {key} для класса {cls.__name__}")
+        return obj
 
