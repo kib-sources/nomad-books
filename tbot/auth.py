@@ -27,5 +27,5 @@ def start(m, res=False):
     bot.send_message(
         m.chat.id,
         'Я на связи! Напиши мне что-нибудь ) ',
-        parse_mode='MarkdownV2',
+        parse_mode='HTML',
     )

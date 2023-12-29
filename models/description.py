@@ -11,15 +11,15 @@ __license__ = 'KIB'
 __credits__ = [
     'pavelmstu',
 ]
-__version__ = "20231226"
-__status__ = 'Develop'
+__version__ = "20231229"
+__status__ = "Production"
 
-# __status__ = "Production"
 
+from typing import Any
 
 # from sqlalchemy.orm import mapped_column
 from sqlalchemy import Column
-from sqlalchemy import Unicode, UnicodeText, SmallInteger, Integer, UUID, DateTime, LargeBinary, ARRAY, Boolean
+from sqlalchemy import Unicode, UnicodeText, SmallInteger, BigInteger, ARRAY, Boolean
 
 import telebot
 
@@ -38,9 +38,7 @@ ProposedGenreList = [
 ]
 
 
-# TODO проблемы будут с многопоточностью
-#   переписать на Redis
-_CHAT_ID_DESCRIPTION = dict()
+# _CHAT_ID_DESCRIPTION = dict() # рудимент
 
 
 class Description(BaseModel):
@@ -63,6 +61,8 @@ class Description(BaseModel):
 
     genre = Column(Unicode, default=None, comment=f"Жанр. Рекомендуемые: {', '.join(ProposedGenreList)}.")
 
+    user_id_create = Column(BigInteger, nullable=False, comment="Telegram ID пользователя, создавшего данную запись.")
+
     # main_foto: Optional[File]
 
     # foto_list: List[File] = Field(default_factory=list)
@@ -75,6 +75,7 @@ class Description(BaseModel):
         else:
             return self.title
 
+    ''' # рудимент
     def completion(self, bot, m):
         global _CHAT_ID_DESCRIPTION
         _CHAT_ID_DESCRIPTION[m.chat_id] = self
@@ -96,7 +97,34 @@ class Description(BaseModel):
             parse_mode='MarkdownV2',
             reply_markup=keyboard
         )
+    # '''
 
+    def send_message_about(self, bot, chat_id):
+        # TODO вместо self.user_id_create вывести @username
+        bot.send_message(
+            chat_id,
+            f"""{self.genre} "{self.full_title()}" 
+Год издания: <b>{self.year}</b>
+description_id=<code>{self.id}</code>
+
+<b>Авторы:</b> {', '.join(self.authors)}
+
+--------
+{self.about}
+---------
+Жанр: {self.genre}
+
+Теги: {', '.join(self.tags)}.
+
+Описание создано пользователем: {self.user_id_create}.
+
+{'<b>ВНИМАНИЕ: книга ещё неопубликована. (enabled is False)</b>' if self.enabled else ''}
+""",
+            parse_mode="HTML",
+        )
+
+        # def __init__(self, **kw: Any):
+        #     super().__init__(**kw)
 
 
 

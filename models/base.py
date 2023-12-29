@@ -65,3 +65,5 @@ class BaseModel(MappedAsDataclass, DeclarativeBase):
                 raise ValueError(f"Нет поля {key} для класса {cls.__name__}")
         return obj
 
+    # def __init__(self, **kw: Any):
+    #     super().__init__(**kw)

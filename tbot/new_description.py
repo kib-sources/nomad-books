@@ -1,7 +1,5 @@
 """
-Функции по работе с книгами:
-* descriptions
-* samples
+Команда /new_description
 
 Create at 26.12.2023 18:47:39
 ~/tbot/description.py
@@ -13,10 +11,8 @@ __license__ = 'KIB'
 __credits__ = [
     'pavelmstu',
 ]
-__version__ = "20231227"
-__status__ = 'Develop'
-
-# __status__ = "Production"
+__version__ = "20231229"
+__status__ = "Production"
 
 
 from sqlalchemy.orm import Session
@@ -49,13 +45,14 @@ def two_elements_each(*some):
         yield (vals[0], None)
 
 
-def  _break_step(message):
+def _break_step(message):
     _ = bot.send_message(
         message.chat.id,
         f'''Вы отменили операцию\\. Введите `/new_description` повторно для создания нового описания\\.
         ''',
         parse_mode='MarkdownV2',
     )
+
 
 def _timeout_step(message):
     _ = bot.send_message(
@@ -104,7 +101,8 @@ def _one_step(message, field, field_map_func, next_text, next_func, optional=Tru
             field,
             value,
         )
-    context[field] = value
+    if value is not None:
+        context[field] = value
 
     # запрашиваем about
     message_next = bot.send_message(
@@ -123,9 +121,14 @@ def _end_step(message):
         # удаляем контекст
         _context_dict.pop(chat_id)
 
-    context['comment'] = message.text
+    if message.text != '-':
+        context['comment'] = message.text
+
+    user_id_create = message.from_user.id
+    context['user_id_create'] = user_id_create
 
     description = Description.make(**context)
+    # description = Description(**context)
 
     with Session(engine) as session:
         session.add(description)
@@ -227,7 +230,8 @@ def _step1(message):
     message_next = bot.send_message(
         message.chat.id,
         '''Введите название книги (`title`)
-'''
+''',
+        reply_markup=telebot.types.ReplyKeyboardRemove(),
     )
     bot.register_next_step_handler(message_next, _step2)
 
@@ -249,7 +253,7 @@ def new_description(m, res=False):
         parse_mode='MarkdownV2',
     )
 
-    markup = telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True)
+    markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
 
     for genre1, genre2 in two_elements_each(*ProposedGenreList):
         if genre2:
