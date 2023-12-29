@@ -20,10 +20,12 @@ __status__ = 'Develop'
 # Инициализация всех функций.
 import tbot.auth  # !
 import tbot.new_description # !
+import tbot.new_samples # !
 # ---------------------------------------------------------------------------------------------------------------------
 import logging
 from time import sleep
 from tbot import bot
+
 
 from settings import TELEGRAM_USERNAME
 

@@ -134,6 +134,7 @@ def _end_step(message):
         session.add(description)
         session.commit()
         session.refresh(description)
+        session.expunge(description)
 
     bot.send_message(
         message.chat.id,

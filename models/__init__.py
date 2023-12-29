@@ -24,6 +24,7 @@ from models.base import BaseModel
 
 # ---------------------------------------------------------------------------------------------------------------------
 from models.description import Description
+from models.sample import Sample
 # ---------------------------------------------------------------------------------------------------------------------
 
 from settings import POSTGRES_SQLALCHEMY_URL, POSTGRES_SQLALCHEMY_URL_password_esc
