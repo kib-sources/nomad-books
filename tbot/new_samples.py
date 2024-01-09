@@ -33,29 +33,12 @@ from models import engine
 
 from models.sample import Sample, SampleStatus
 
-_NO_TEXT = 'Нет'
+from tbot.common import count_samples
+
+_NO_TEXT = 'Отмена'
 _YES_TEXT = "Добавить {N} экземпляров к {description_id}"
 assert '{N}' in _YES_TEXT
 assert '{description_id}' in _YES_TEXT
-
-
-def get_samples(user_id_owner, status: SampleStatus):
-    with Session(engine) as session:
-
-        query = select(Sample).where(
-            and_(Sample.user_id_owner == user_id_owner, Sample.status == status.value)
-                 )
-
-        result = session.execute(
-            query
-        ).all()
-
-        return result
-
-
-def count_samples(user_id_owner, status: SampleStatus) -> int:
-    result = get_samples(user_id_owner, status)
-    return len(result)
 
 
 def _not_correct_format(message):
@@ -100,7 +83,7 @@ def _step_append_not_correct_input(message):
 
 def _step_append(message):
 
-    # "Нет"
+    # "Отмена"
     # "Добавить {N} экземпляров к {description_id}"
     text = message.text
     user_id = message.from_user.id

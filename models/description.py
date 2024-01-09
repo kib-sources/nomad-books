@@ -48,14 +48,14 @@ class Description(BaseModel):
     }
     # id, create_at, update_at, comment,
 
-    title = Column(Unicode, nullable=False, comment="Заголовок книги или журнала (включая номер)")
+    title = Column(Unicode, nullable=False, comment="Заголовок книги или журнала, ВКЛЮЧАЯ том, если есть. (но не номер журнала или номер издания)")
     year = Column(SmallInteger, nullable=False, comment="Год издания")
 
     about = Column(UnicodeText, default=None, comment="Описание книги/журнала")
 
     authors = Column(ARRAY(Unicode), default=list, comment="Авторы книги/журнала")
 
-    number = Column(Unicode, default=None, comment="номер (для журнала)")
+    number = Column(Unicode, default=None, comment="номер (для журнала) или издание (для книги)")
 
     tags = Column(ARRAY(Unicode), default=list, comment="Теги")
 
@@ -71,9 +71,9 @@ class Description(BaseModel):
 
     def full_title(self):
         if self.number:
-            return f"{self.title}, {self.number}"
+            return f"{self.title}, {self.number} ({self.year})"
         else:
-            return self.title
+            return f"{self.title} ({self.year})"
 
     ''' # рудимент
     def completion(self, bot, m):

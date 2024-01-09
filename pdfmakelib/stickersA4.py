@@ -17,10 +17,14 @@ __status__ = 'Develop'
 
 # __status__ = "Production"
 
+from dataclasses import dataclass
+
 from uuid import UUID
 
 import os
 import io
+
+from typing import List
 
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
@@ -37,6 +41,12 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.pagesizes import A4
 
 from reportlab.graphics.barcode import qr
+
+from models.sample import Sample
+
+# Количество стикеров на одну страницу
+# Пока параметр НЕЛЬЗЯ менять...
+COUNT_BY_ONE_PAGE = 8
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Settings
@@ -98,6 +108,7 @@ draw_card_uuids_size = 13
 height_text = 5 * mm
 
 organization_telegram = '@kibinfo'
+organization = os.getenv('ORGANIZATION', "KIB")
 
 # МАКСИМАЛЬНОЕ общее количество карточек на один лист A4
 max_count_cards = count_by_x * count_by_y
@@ -239,9 +250,8 @@ def draw_card(
         full_title: str,
         description_id: UUID,
         sample_id: UUID,
-        copy_right_text: str,
 ):
-    protocol_qr_transmit = 'v1'
+    nomad_books_qr_protocol = 'v1'
 
     assert 0 <= index < len(card_start_points)
 
@@ -262,7 +272,7 @@ def draw_card(
         _full_title,
     )
 
-    qr_code_string = f'nomad-books;{protocol_qr_transmit};description_id={description_id};sample_id={sample_id};full_title={full_title}'
+    qr_code_string = f'nomad_books_qr_protocol={nomad_books_qr_protocol}||organization={organization}||description_id={description_id}||sample_id={sample_id}||full_title={full_title[:60]}'
     print(f"index={index}, full_title={full_title}, qr_code_string={qr_code_string}")
     qr_code = qr.QrCodeWidget(qr_code_string)
 
@@ -289,10 +299,59 @@ def test_check_max_full_title():
             # full_title='Harry Potter',
             description_id=uuid.uuid4(),
             sample_id=uuid.uuid4(),
-            copy_right_text='Данная книга является собственностью АНО "Клуб Информационной Безопасности (9717099769, 1217700108504)'
+            # copy_right_text='Данная книга является собственностью АНО "Клуб Информационной Безопасности (9717099769, 1217700108504)'
         )
 
     c.save()
+
+
+@dataclass
+class CardInfo:
+    full_title: str
+    description_id: UUID
+    sample_id: UUID
+
+
+def make_A4_stickers(
+    *,
+    cards: List[CardInfo],
+    pdf_file_path: str,
+):
+    # for sample in samples:
+    #     if sample.status != SampleStatus.init:
+    #         ...
+    assert pdf_file_path.endswith('.pdf')
+
+    c = None
+    i = 0
+    count_pages = None
+    while True:
+        cards_chunk = cards[i*COUNT_BY_ONE_PAGE:(i+1)*COUNT_BY_ONE_PAGE]
+        if len(cards_chunk) == 0:
+            break
+
+        if c is None:
+            c = canvas.Canvas(pdf_file_path, pagesize=A4)
+            count_pages = 1
+        else:
+            # Close the current page and possibly start on a new page.
+            c.showPage()
+            c.setPageSize(A4)
+            count_pages += 1
+
+        for index, card in enumerate(cards_chunk):
+            draw_card(
+                c, index,
+                full_title=card.full_title,
+                description_id=card.description_id,
+                sample_id=card.sample_id,
+            )
+
+        i += 1
+        continue
+
+    c.save()
+    return count_pages
 
 
 if __name__ == "__main__":
