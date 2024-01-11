@@ -83,7 +83,6 @@ class Sample(BaseModel):
         'comment': 'Экземпляр конкретной книги.'
     }
 
-
     description_id = Column(UUID, index=True, nullable=False,
                             comment="Ссылка на Description.id. Описание книги, для которого есть этот экземпляр.")
     user_id_create = Column(BigInteger, index=False, nullable=False,

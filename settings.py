@@ -21,10 +21,11 @@ __credits__ = [
     "pavelmstu",
 ]
 
-__version__ = "20231016"
+__version__ = "20240110"
 __status__ = "Production"
 
 import os
+import time
 
 ORGANIZATION = os.getenv('ORGANIZATION', "Клуб Информационной Безопасности")
 
@@ -52,6 +53,20 @@ POSTGRES_PORT = int(os.getenv("POSTGRES_PORT", 5432))
 
 POSTGRES_SQLALCHEMY_URL = f'postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@localhost:{POSTGRES_PORT}/{POSTGRES_DB}'
 POSTGRES_SQLALCHEMY_URL_password_esc = POSTGRES_SQLALCHEMY_URL.replace(POSTGRES_PASSWORD, '********')
+
+USER_OWNER_ID = int(os.getenv('USER_OWNER_ID', 0))
+assert USER_OWNER_ID > 0, "Не определена USER_OWNER_ID переменная окружения. Используйте https://t.me/userinfobot бот, чтобы узнать свой ID-шник. Внесите его"
+
+# Время жизни инвайта
+#   в минутах
+INVITE_LIFETIME_MIN = int(os.getenv('INVITE_LIFETIME_MIN', 20))
+
+# Moscow: UTC+3
+TZ_BOT_OFFSET = os.getenv('TZ_BOT_OFFSET', +3)
+# os.environ['TZ'] = os.getenv('TZ', 'Europe/London')
+os.environ['TZ'] = 'Europe/London'
+time.tzset()
+
 
 
 # POSTGRES_URL = POSTGRES_URL.\

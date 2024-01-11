@@ -18,7 +18,7 @@ __status__ = 'Develop'
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Инициализация всех функций.
-import tbot.auth  # !
+import tbot.start  # !
 import tbot.new_description  # !
 import tbot.new_samples  # !
 import tbot.pull_samples  # !
